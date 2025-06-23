@@ -4,6 +4,8 @@ import ProductImageLightbox from "./components/main/ProductImageLightbox";
 
 function App() {
   const [openLightbox, setOpenLightbox] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [imageIndex, setimageIdex] = useState(0);
 
   const handleImageClick = function () {
     setOpenLightbox(true);
@@ -13,10 +15,21 @@ function App() {
     <>
       {openLightbox ? (
         <ProductImageLightbox>
-          <ProductImageLayout openLightbox={openLightbox} closeLightbox={setOpenLightbox}  />
+          <ProductImageLayout
+            openLightbox={openLightbox}
+            closeLightbox={setOpenLightbox}
+            currentImage={currentImage}
+            updateCurrentImage={setCurrentImage}
+            imageIndex={imageIndex}
+            updateImageIndex={setimageIdex}
+          />
         </ProductImageLightbox>
       ) : (
-        <ProductImageLayout imageClick={handleImageClick} />
+        <ProductImageLayout
+          imageClick={handleImageClick}
+          imageIndex={imageIndex}
+          updateImageIndex={setimageIdex}
+        />
       )}
     </>
   );

@@ -74,6 +74,7 @@ body {
 
 .product--gallery__image.active-product-image {
   opacity: 0.4;
+  outline: 3px solid var(--Orange);
 }
 /* product image lightbox */
 .product-image__lightbox {

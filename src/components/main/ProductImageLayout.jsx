@@ -8,21 +8,26 @@ import ProductImage2 from "../../assets/image-product-2.jpg";
 import ProductImage3 from "../../assets/image-product-3.jpg";
 import ProductImage4 from "../../assets/image-product-4.jpg";
 import { useState } from "react";
-import ProductImageLightbox from "./ProductImageLightbox";
 
 const imgArr = [ProductImage1, ProductImage2, ProductImage3, ProductImage4];
 
-function ProductImageLayout({ imageClick, openLightbox, closeLightbox }) {
-  const [imageIndex, setimageIdex] = useState(0);
+function ProductImageLayout({
+  imageClick,
+  openLightbox,
+  closeLightbox,
+  imageIndex,
+  updateImageIndex,
+}) {
+  // const [imageIndex, setimageIdex] = useState(0);
 
   const nextImage = function () {
-    if (imageIndex === imgArr.length - 1) setimageIdex(0);
-    else setimageIdex((i) => i + 1);
+    if (imageIndex === imgArr.length - 1) updateImageIndex(0);
+    else updateImageIndex((i) => i + 1);
   };
 
   const prevImage = function () {
-    if (imageIndex === 0) setimageIdex(imgArr.length - 1);
-    else setimageIdex((i) => i - 1);
+    if (imageIndex === 0) updateImageIndex(imgArr.length - 1);
+    else updateImageIndex((i) => i - 1);
   };
 
   return (
@@ -46,7 +51,7 @@ function ProductImageLayout({ imageClick, openLightbox, closeLightbox }) {
                 className={`product--gallery__image mx-auto d-block w-100 ${
                   i === imageIndex ? "active-product-image" : ""
                 }`}
-                onClick={() => setimageIdex(i)}
+                onClick={() => updateImageIndex(i)}
               />
             </Col>
           ))}
