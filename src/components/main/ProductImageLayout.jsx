@@ -1,63 +1,37 @@
-import { Col, Container, Image, Row } from "react-bootstrap";
-
-import ProductImageDisplay from "./ProductImageDisplay";
-import ProductImageGallery from "./ProductImageGallery";
-
-import ProductImage1 from "../../assets/image-product-1.jpg";
-import ProductImage2 from "../../assets/image-product-2.jpg";
-import ProductImage3 from "../../assets/image-product-3.jpg";
-import ProductImage4 from "../../assets/image-product-4.jpg";
 import { useState } from "react";
+import ProductImageGallery from "./ProductImageGallery";
+import ProductImageLightbox from "./ProductImageLightbox";
 
-const imgArr = [ProductImage1, ProductImage2, ProductImage3, ProductImage4];
+function ProductImageLayout() {
+  const [openLightbox, setOpenLightbox] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [imageIndex, setimageIdex] = useState(0);
 
-function ProductImageLayout({
-  imageClick,
-  openLightbox,
-  closeLightbox,
-  imageIndex,
-  updateImageIndex,
-}) {
-  // const [imageIndex, setimageIdex] = useState(0);
-
-  const nextImage = function () {
-    if (imageIndex === imgArr.length - 1) updateImageIndex(0);
-    else updateImageIndex((i) => i + 1);
-  };
-
-  const prevImage = function () {
-    if (imageIndex === 0) updateImageIndex(imgArr.length - 1);
-    else updateImageIndex((i) => i - 1);
+  const handleImageClick = function () {
+    setOpenLightbox(true);
   };
 
   return (
-    <div>
-      <ProductImageDisplay
-        imgUrl={imgArr[imageIndex]}
-        imageClick={imageClick}
-        nextImage={nextImage}
-        prevImage={prevImage}
-        openLightbox={openLightbox}
-        closeLightbox={closeLightbox}
-      />
-
-      <Container fluid="md">
-        <Row className="product--gallery__container mx-auto">
-          {imgArr.map((img, i) => (
-            <Col key={i} className="product--gallery__col">
-              <Image
-                src={img}
-                rounded
-                className={`product--gallery__image mx-auto d-block w-100 ${
-                  i === imageIndex ? "active-product-image" : ""
-                }`}
-                onClick={() => updateImageIndex(i)}
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <>
+      {openLightbox ? (
+        <ProductImageLightbox>
+          <ProductImageGallery
+            openLightbox={openLightbox}
+            closeLightbox={setOpenLightbox}
+            currentImage={currentImage}
+            updateCurrentImage={setCurrentImage}
+            imageIndex={imageIndex}
+            updateImageIndex={setimageIdex}
+          />
+        </ProductImageLightbox>
+      ) : (
+        <ProductImageGallery
+          imageClick={handleImageClick}
+          imageIndex={imageIndex}
+          updateImageIndex={setimageIdex}
+        />
+      )}
+    </>
   );
 }
 
