@@ -24,6 +24,18 @@ body {
   font-family: "Kumbh Sans", sans-serif;
 }
 
+/* production image containers */
+.product--gallery__container {
+  /* max-width: 576px; */
+  max-width: 416px !important;
+}
+
+.product--image__container {
+  /* max-width: 568px !important; */
+  max-width: 486px !important;
+  position: relative;
+}
+
 /* product image styles */
 
 .product--image__display {
@@ -44,12 +56,85 @@ body {
   }
 }
 
+.product--gallery__col {
+  background-color: #fff;
+  margin-inline: 8px;
+  padding: 0 !important;
+  border-radius: 0.375rem;
+}
+
 .product--gallery__image {
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
-.product--gallery__image:hover,
-.product--gallery__image.active {
+.product--gallery__image:hover {
   opacity: 0.6;
+}
+
+.product--gallery__image.active-product-image {
+  opacity: 0.4;
+}
+/* product image lightbox */
+.product-image__lightbox {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fadeInEffect 0.4s ease-in-out;
+}
+
+/* product image navigation button */
+.product--image__navigation {
+  all: unset;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  filter: none;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.product--image__navigation img {
+  transition: all 0.3s ease;
+}
+
+.product--image__navigation:hover img {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(76%) saturate(909%)
+    hue-rotate(345deg) brightness(99%) contrast(105%);
+}
+
+.product--next {
+  right: -24px;
+}
+
+.product--prev {
+  left: 12px;
+}
+
+.lightbox__close--btn {
+  all: unset;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -32px;
+  right: 10px;
+  transition: all 0.3s ease;
+  filter: brightness(0) saturate(100%) invert(98%) sepia(94%) saturate(2%)
+    hue-rotate(12deg) brightness(113%) contrast(100%);
+}
+
+.lightbox__close--btn:hover {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(76%) saturate(909%)
+    hue-rotate(345deg) brightness(99%) contrast(105%);
 }
