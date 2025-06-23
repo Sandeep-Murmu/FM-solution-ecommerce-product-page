@@ -6,7 +6,6 @@ import ProductImage1 from "../../assets/image-product-1.jpg";
 import ProductImage2 from "../../assets/image-product-2.jpg";
 import ProductImage3 from "../../assets/image-product-3.jpg";
 import ProductImage4 from "../../assets/image-product-4.jpg";
-import { useState } from "react";
 
 const imgArr = [ProductImage1, ProductImage2, ProductImage3, ProductImage4];
 
@@ -16,8 +15,8 @@ function ProductImageGallery({
   closeLightbox,
   imageIndex,
   updateImageIndex,
+  
 }) {
-  // const [imageIndex, setimageIdex] = useState(0);
 
   const nextImage = function () {
     if (imageIndex === imgArr.length - 1) updateImageIndex(0);
@@ -30,7 +29,7 @@ function ProductImageGallery({
   };
 
   return (
-    <div>
+    <div className="product-image">
       <ProductImageDisplay
         imgUrl={imgArr[imageIndex]}
         imageClick={imageClick}

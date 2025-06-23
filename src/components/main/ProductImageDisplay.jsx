@@ -11,6 +11,7 @@ function ProductImageDisplay({
   closeLightbox,
 }) {
   const [fadeIn, setFadeIn] = useState(false);
+  console.log(openLightbox);
 
   // apply fade animation on image change
   useEffect(() => {
@@ -24,7 +25,10 @@ function ProductImageDisplay({
   }, [imgUrl]);
 
   return (
-    <Container fluid="md" className="mt-5 mb-4">
+    <Container
+      fluid="md"
+      className={`mt-5 mb-4 ${openLightbox ? "" : "product-lightbox-width"}`}
+    >
       <Container className="product--image__container">
         <Image
           src={imgUrl}

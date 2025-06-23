@@ -29,6 +29,7 @@ function ProductImageLayout() {
           imageClick={handleImageClick}
           imageIndex={imageIndex}
           updateImageIndex={setimageIdex}
+          openLightbox={openLightbox}
         />
       )}
     </>

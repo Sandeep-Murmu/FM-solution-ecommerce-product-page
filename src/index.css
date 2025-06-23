@@ -112,6 +112,10 @@ body {
     hue-rotate(345deg) brightness(99%) contrast(105%);
 }
 
+.product-lightbox-width {
+  width: 448px !important;
+}
+
 .product--next {
   right: -24px;
 }
