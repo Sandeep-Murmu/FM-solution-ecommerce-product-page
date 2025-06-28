@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
+import BtnQuantity from "./BtnQuantity";
 
-function ProductDetail({ product }) {
+function ProductDetail({ product, quantity, quantityControl}) {
   const {
     productName,
     productTag,
@@ -23,6 +24,9 @@ function ProductDetail({ product }) {
           <h3 className="product-detail__discount">{productDiscount}%</h3>
         </div>
         <h5 className="product-detail__price">${productPrice.toFixed(2)}</h5>
+        <div className="product-shop-control">
+          <BtnQuantity quantity={quantity}  controls={quantityControl} />
+        </div>
       </Container>
     </div>
   );
