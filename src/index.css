@@ -24,6 +24,51 @@ body {
   font-family: "Kumbh Sans", sans-serif;
 }
 
+/* header */
+.header-container {
+  max-width: 1200px !important;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-right: 60px !important;
+}
+
+.header-cart {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: all .2s ease;
+}
+
+.header-cart:hover {
+  filter: brightness(0) saturate(100%);
+}
+
+.users {
+  display: flex;
+  gap: 32px;
+}
+
+.user-icon {
+  width: 46px;
+  border-radius: 100%;
+  outline: 2px solid transparent;
+  transition: all .2s ease;
+}
+
+.user-icon img {
+  width: 100%;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.user-icon:hover {
+  outline: 2px solid var(--Orange);
+}
+
 /* production image containers */
 .product--gallery__container {
   /* max-width: 576px; */

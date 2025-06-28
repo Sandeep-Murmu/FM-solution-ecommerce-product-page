@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import ProductDetail from "./components/main/ProductDetail";
 import ProductImageLayout from "./components/main/ProductImageLayout";
 import { useEffect, useState } from "react";
+import Header from "./components/header/Header";
 
 const product = {
   productTag: "sneaker company",
@@ -35,22 +36,25 @@ function App() {
   );
 
   return (
-    <div className="main">
-      <Container fluid="md">
-        <Row>
-          <Col>
-            <ProductImageLayout />
-          </Col>
-          <Col className="d-flex flex-column justify-content-center">
-            <ProductDetail
-              product={product}
-              quantity={quantity}
-              quantityControl={handleQuantity}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <>
+      <Header />
+      <div className="main">
+        <Container fluid="md">
+          <Row>
+            <Col>
+              <ProductImageLayout />
+            </Col>
+            <Col className="d-flex flex-column justify-content-center">
+              <ProductDetail
+                product={product}
+                quantity={quantity}
+                quantityControl={handleQuantity}
+              />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 
