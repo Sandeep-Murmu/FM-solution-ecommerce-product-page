@@ -1,7 +1,8 @@
 import { Container } from "react-bootstrap";
 import BtnQuantity from "./BtnQuantity";
+import BtnCart from "./BtnCart";
 
-function ProductDetail({ product, quantity, quantityControl}) {
+function ProductDetail({ product, quantity, quantityControl }) {
   const {
     productName,
     productTag,
@@ -25,7 +26,8 @@ function ProductDetail({ product, quantity, quantityControl}) {
         </div>
         <h5 className="product-detail__price">${productPrice.toFixed(2)}</h5>
         <div className="product-shop-control">
-          <BtnQuantity quantity={quantity}  controls={quantityControl} />
+          <BtnQuantity quantity={quantity} controls={quantityControl} />
+          <BtnCart />
         </div>
       </Container>
     </div>
