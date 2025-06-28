@@ -1,7 +1,7 @@
-function BtnCart() {
+function BtnCart({addToCart}) {
   return (
     <>
-      <button className="btn-cart">
+      <button className="btn-cart" onClick={addToCart}>
         <span className="cart-icon">
           <img src="./images/icon-cart.svg" alt="icon-cart" />
         </span>

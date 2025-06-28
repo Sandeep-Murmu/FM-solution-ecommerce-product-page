@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 
-function Header() {
+function Header({ cartNotice, quantity }) {
   return (
     <div className="header">
       <Navbar>
@@ -20,6 +20,9 @@ function Header() {
           </Navbar.Collapse>
           <div className="users">
             <button className="header-cart">
+              {cartNotice && (
+                <span className="cart-notification">{quantity}</span>
+              )}
               <img src="./images/icon-cart.svg" alt="" />
             </button>
             <div className="user-icon">

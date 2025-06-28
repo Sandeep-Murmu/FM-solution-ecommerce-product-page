@@ -17,6 +17,8 @@ const product = {
 function App() {
   const [quantity, setQuantiy] = useState(0);
   const [price, setPrice] = useState(0);
+  const [incart, setIncart] = useState(false);
+  const [cartQuantity, setCartQuantity] = useState(0);
 
   const handleQuantity = function (control) {
     if (control === "up") {
@@ -28,6 +30,13 @@ function App() {
     }
   };
 
+  const handleCartAdding = function () {
+    if (!quantity) return;
+
+    setIncart(true);
+    setCartQuantity(quantity);
+  };
+
   useEffect(
     function () {
       setPrice(quantity * product.productNetPrice);
@@ -37,7 +46,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header cartNotice={incart} quantity={cartQuantity} />
       <div className="main">
         <Container fluid="md">
           <Row>
@@ -49,6 +58,7 @@ function App() {
                 product={product}
                 quantity={quantity}
                 quantityControl={handleQuantity}
+                addToCart={handleCartAdding}
               />
             </Col>
           </Row>
