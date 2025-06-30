@@ -28,7 +28,7 @@ function CartPopup({
               </h4>
             </div>
           </div>
-          <button className="cart-delete">
+          <button className="cart-delete" onClick={removeCart}>
             <img src="./images/icon-delete.svg" alt="del" />
           </button>
         </div>
