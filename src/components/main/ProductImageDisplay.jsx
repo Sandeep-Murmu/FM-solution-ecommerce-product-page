@@ -11,7 +11,6 @@ function ProductImageDisplay({
   closeLightbox,
 }) {
   const [fadeIn, setFadeIn] = useState(false);
-  console.log(openLightbox);
 
   // apply fade animation on image change
   useEffect(() => {

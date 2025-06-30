@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import ProductDetail from "./components/main/ProductDetail";
 import ProductImageLayout from "./components/main/ProductImageLayout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./components/header/Header";
 
 const product = {
@@ -30,23 +30,33 @@ function App() {
     }
   };
 
+  
   const handleCartAdding = function () {
     if (!quantity) return;
-
+    
     setIncart(true);
     setCartQuantity(quantity);
+    setPrice(quantity * product.productNetPrice);
+  };
+  
+  const handleDeleteCart = function () {
+    console.log("cart clear");
+    setCartQuantity(0);
+    setPrice(cartQuantity * product.productNetPrice);
+    setIncart(false)
   };
 
-  useEffect(
-    function () {
-      setPrice(quantity * product.productNetPrice);
-    },
-    [quantity]
-  );
 
   return (
     <>
-      <Header cartNotice={incart} quantity={cartQuantity} />
+      <Header
+        cartNotice={incart}
+        quantity={cartQuantity}
+        productName={product.productName}
+        productPrice={product.productNetPrice}
+        totalPrice={price}
+        removeCart={handleDeleteCart}
+      />
       <div className="main">
         <Container fluid="md">
           <Row>

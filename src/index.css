@@ -65,12 +65,12 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 100;
-
 }
 
 .users {
   display: flex;
   gap: 32px;
+  position: relative;
 }
 
 .user-icon {
@@ -92,13 +92,11 @@ body {
 
 /* production image containers */
 .product--gallery__container {
-  /* max-width: 576px; */
-  max-width: 462px !important;
+  max-width: 424px !important;
 }
 
 .product--image__container {
-  /* max-width: 568px !important; */
-  max-width: 486px !important;
+  max-width: 424px !important;
   position: relative;
 }
 
@@ -292,18 +290,11 @@ h5.product-detail__price {
 
 /* cart button */
 .btn-cart {
-  border: none;
-  outline: none;
   flex-grow: 2;
-  background-color: var(--Orange);
+}
+
+.btn-cart .btn-primary {
   padding: 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
 .cart-icon {
@@ -318,4 +309,81 @@ h5.product-detail__price {
 
 .cart-icon img {
   width: 100%;
+}
+
+.btn-primary {
+  border: none;
+  outline: none;
+  background-color: var(--Orange);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* cart popup */
+.cart-popup {
+  position: absolute;
+  top: 40px;
+  left: -400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cart-top {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--Grayish-blue);
+}
+
+.cart-top h4 {
+  font-size: 18px;
+}
+
+.cart-bottom {
+  padding: 16px;
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cart-product-image {
+  width: 52px;
+}
+
+.cart-product-image img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.cart-product-description h4 {
+  font-size: 16px;
+  color: var(--Dark-grayish-blue);
+}
+
+.cart-product-description h4 b {
+  color: var(--Dark-blue);
+}
+
+.cart-delete {
+  border: none;
+  background-color: transparent;
+  padding: 6px;
+  transition: all 0.3s ease;
+}
+
+.cart-delete:hover {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(76%) saturate(909%)
+    hue-rotate(345deg) brightness(99%) contrast(105%);
+}
+
+.cart-button button {
+  padding-block: 10px;
 }

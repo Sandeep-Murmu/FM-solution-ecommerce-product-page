@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import BtnQuantity from "./BtnQuantity";
-import BtnCart from "./BtnCart";
+import Button from "../Button";
 
-function ProductDetail({ product, quantity, quantityControl, addToCart   }) {
+function ProductDetail({ product, quantity, quantityControl, addToCart }) {
   const {
     productName,
     productTag,
@@ -27,7 +27,14 @@ function ProductDetail({ product, quantity, quantityControl, addToCart   }) {
         <h5 className="product-detail__price">${productPrice.toFixed(2)}</h5>
         <div className="product-shop-control">
           <BtnQuantity quantity={quantity} controls={quantityControl} />
-          <BtnCart addToCart={addToCart}  />
+          <div className="btn-cart">
+            <Button btnAction={addToCart}>
+              <span className="cart-icon">
+                <img src="./images/icon-cart.svg" alt="icon-cart" />
+              </span>
+              Add to Cart
+            </Button>
+          </div>
         </div>
       </Container>
     </div>
