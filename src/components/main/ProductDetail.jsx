@@ -18,13 +18,15 @@ function ProductDetail({ product, quantity, quantityControl, addToCart }) {
         <h4 className="product-detail__tag">{productTag}</h4>
         <h1 className="product-detail__name">{productName}</h1>
         <p className="product-detail__para">{productDescription}</p>
-        <div className="display-price1 d-flex align-items-baseline ">
-          <h2 className="product-detail__netprice">
-            ${productNetPrice.toFixed(2)}
-          </h2>
-          <h3 className="product-detail__discount">{productDiscount}%</h3>
+        <div className="product-prices">
+          <div className="display-price1 d-flex align-items-baseline ">
+            <h2 className="product-detail__netprice">
+              ${productNetPrice.toFixed(2)}
+            </h2>
+            <h3 className="product-detail__discount">{productDiscount}%</h3>
+          </div>
+          <h5 className="product-detail__price">${productPrice.toFixed(2)}</h5>
         </div>
-        <h5 className="product-detail__price">${productPrice.toFixed(2)}</h5>
         <div className="product-shop-control">
           <BtnQuantity quantity={quantity} controls={quantityControl} />
           <div className="btn-cart">

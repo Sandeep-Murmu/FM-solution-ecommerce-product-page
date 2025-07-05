@@ -31,12 +31,23 @@ function ProductImageDisplay({
       <Container className="product--image__container">
         <Image
           src={imgUrl}
-          rounded
           className={`product--image__display mx-auto d-block w-100  ${
             fadeIn ? "fade-in" : ""
           }`}
           onClick={imageClick}
         />
+        <button
+          className="product--image__navigation product--prev btn-desktop"
+          onClick={prevImage}
+        >
+          <img src="./images/icon-previous.svg" alt="icon-next" />
+        </button>
+        <button
+          className="product--image__navigation product--next btn-desktop"
+          onClick={nextImage}
+        >
+          <img src="./images/icon-next.svg" alt="icon-next" />
+        </button>
         {openLightbox && (
           <>
             <button
