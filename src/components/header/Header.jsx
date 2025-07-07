@@ -24,12 +24,13 @@ function Header({
     setCartPopup((p) => !p);
   };
 
-  useEffect(
-    function () {
-      if (!cartNotice && open) setCartPopup(false);
-    },
-    [cartNotice]
-  );
+  // useEffect(
+  //   function () {
+  //     if (!cartNotice && open) setCartPopup(false);
+  //   },
+  //   [cartNotice]
+  // );
+
 
   return (
     <div className="header">
@@ -81,7 +82,17 @@ function Header({
               )}
               <img src="./images/icon-cart.svg" alt="" />
             </button>
-            {cartPopup && cartNotice && (
+            {cartPopup  && (
+              <CartPopup
+                productName={productName}
+                productPrice={productPrice}
+                totalPrice={totalPrice}
+                quantity={quantity}
+                removeCart={removeCart}
+                setCartPopup={setCartPopup}
+              />
+            )}
+            {/* {cartPopup && cartNotice && (
               <CartPopup
                 productName={productName}
                 productPrice={productPrice}
@@ -89,7 +100,7 @@ function Header({
                 quantity={quantity}
                 removeCart={removeCart}
               />
-            )}
+            )} */}
             <div className="user-icon">
               <img src="./images/image-avatar.png" alt="user-avatar" />
             </div>
