@@ -1,14 +1,6 @@
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import CartPopup from "./CartPopup";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Header({
   cartNotice,
@@ -19,6 +11,8 @@ function Header({
   removeCart,
 }) {
   const [cartPopup, setCartPopup] = useState(false);
+  const popupRef = useRef(null);
+  const cartRef = useRef(null);
 
   const handleCartPopup = function () {
     setCartPopup((p) => !p);
@@ -31,28 +25,35 @@ function Header({
   //   [cartNotice]
   // );
 
+  useEffect(
+    function () {
+      function handleClickOutside(event) {
+        if (
+          popupRef.current &&
+          !popupRef.current.contains(event.target) &&
+          !cartRef.current.contains(event.target)
+        ) {
+          setCartPopup(false);
+          console.log("close Popup");
+
+          console.log("cart clicked", cartRef.current.contains(event.target));
+          console.log("popup clicked", popupRef.current.contains(event.target));
+        }
+      }
+
+      if (cartPopup) {
+        document.addEventListener("mousedown", handleClickOutside);
+      }
+
+      return () => {
+        document.addEventListener("mousedown", handleClickOutside);
+      };
+    },
+    [cartPopup]
+  );
 
   return (
     <div className="header">
-      {/* <Navbar>
-        <Container className="header-container">
-          <Navbar.Brand href="#">
-            <img src="./images/logo.svg" alt="bland-logo" />
-          </Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="navbar-nav-main" />
-          <Navbar.Collapse id="navbar-nav-main">
-            <Nav className="me-auto">
-              <Nav.Link href="#collection">Collection</Nav.Link>
-              <Nav.Link href="#men">Men</Nav.Link>
-              <Nav.Link href="#women">Women</Nav.Link>
-              <Nav.Link href="#about">About</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
-
       <Navbar expand="md">
         <Container className="header-container">
           <Navbar.Brand href="#">
@@ -76,14 +77,19 @@ function Header({
             </Offcanvas.Body>
           </Navbar.Offcanvas>
           <div className="users">
-            <button className="header-cart" onClick={handleCartPopup}>
+            <button
+              ref={cartRef}
+              className="header-cart"
+              onClick={handleCartPopup}
+            >
               {cartNotice && (
                 <span className="cart-notification">{quantity}</span>
               )}
               <img src="./images/icon-cart.svg" alt="" />
             </button>
-            {cartPopup  && (
+            {cartPopup && (
               <CartPopup
+                ref={popupRef}
                 productName={productName}
                 productPrice={productPrice}
                 totalPrice={totalPrice}
@@ -92,15 +98,6 @@ function Header({
                 setCartPopup={setCartPopup}
               />
             )}
-            {/* {cartPopup && cartNotice && (
-              <CartPopup
-                productName={productName}
-                productPrice={productPrice}
-                totalPrice={totalPrice}
-                quantity={quantity}
-                removeCart={removeCart}
-              />
-            )} */}
             <div className="user-icon">
               <img src="./images/image-avatar.png" alt="user-avatar" />
             </div>
