@@ -93,6 +93,7 @@ nav.navbar {
   display: flex;
   gap: 32px;
   position: relative;
+  overflow: visible;
 }
 
 .user-icon {
@@ -357,11 +358,13 @@ h5.product-detail__price {
 /* cart popup */
 .cart-popup {
   position: absolute;
-  top: 40px;
-  left: -400px;
+  top: 54px;
+  left: -146px;
+  min-width: 346px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 100;
 }
 
 .cart-top {
@@ -453,6 +456,8 @@ h5.product-detail__price {
     gap: 16px;
   }
 
+  /* cart notification */
+
   /* product image */
 
   .main .row {
@@ -517,5 +522,15 @@ h5.product-detail__price {
 
   h3.product-detail__discount {
     font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cart-popup {
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
   }
 }
