@@ -1,8 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import ProductDetail from "./components/main/ProductDetail";
 import ProductImageLayout from "./components/main/ProductImageLayout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/header/Header";
+import { useCart } from "./Context/cartContext";
 
 const product = {
   productTag: "sneaker company",
@@ -15,37 +16,20 @@ const product = {
 };
 
 function App() {
-  const [quantity, setQuantiy] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [incart, setIncart] = useState(false);
-  const [cartQuantity, setCartQuantity] = useState(0);
+  const {
+    quantity,
+    price,
+    incart,
+    cartQuantity,
+    setProduct,
+    handleQuantity,
+    handleCartAdding,
+    handleDeleteCart,
+  } = useCart();
 
-  const handleQuantity = function (control) {
-    if (control === "up") {
-      setQuantiy((q) => q + 1);
-    } else if (control === "down" && quantity > 0) {
-      setQuantiy((q) => q - 1);
-    } else {
-      return;
-    }
-  };
-
-  
-  const handleCartAdding = function () {
-    if (!quantity) return;
-    
-    setIncart(true);
-    setCartQuantity(quantity);
-    setPrice(quantity * product.productNetPrice);
-  };
-  
-  const handleDeleteCart = function () {
-    console.log("cart clear");
-    setCartQuantity(0);
-    setPrice(cartQuantity * product.productNetPrice);
-    setIncart(false)
-  };
-
+  useEffect(function () {
+    setProduct(product);
+  }, []);
 
   return (
     <>
