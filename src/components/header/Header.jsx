@@ -34,10 +34,6 @@ function Header({
           !cartRef.current.contains(event.target)
         ) {
           setCartPopup(false);
-          console.log("close Popup");
-
-          console.log("cart clicked", cartRef.current.contains(event.target));
-          console.log("popup clicked", popupRef.current.contains(event.target));
         }
       }
 
